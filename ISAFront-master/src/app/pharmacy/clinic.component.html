@@ -1,0 +1,169 @@
+<nav class="navbar navbar-expand-lg navbar-light "style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Početna
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Profil<span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <form [formGroup]="form2" (ngSubmit)="onSubmit() && form.valid" novalidate *ngIf="!this.addAdminClicked">
+    <h4>Dodaj apoteku:</h4>
+    <div class="form-group">
+      <div class="col-md-4 mb-3">
+        <label for="name">Naziv apoteke:</label>
+        <input formControlName="name" [ngClass]="{'is-invalid': form2.get('name').touched && form2.get('name').invalid}"
+          type="text" class="form-control" id="name" name="name" placeholder="Naziv apoteke
+          " [(ngModel)]="clinic.name"
+          required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-6 mb-3">
+        <label for="address">Adresa:</label>
+        <input formControlName="address" disabled="true"
+          [ngClass]="{'is-invalid': form2.get('address').touched && form2.get('address').invalid}" type="text"
+          class="form-control" id="address" placeholder="Adresa" [(ngModel)]="address" name="address" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Opis:</label>
+      <textarea formControlName="description"
+        [ngClass]="{'is-invalid': form2.get('description').touched && form2.get('description').invalid}"
+        class="form-control"  placeholder="Opis" [(ngModel)]="clinic.description" name="clinicDescription"
+        id="description" required></textarea>
+    </div>
+    <div id="map" class="map"></div>
+    <br>
+    <button class="btn btn-success" [disabled]="!form2.valid" type="submit">Sačuvaj</button>
+  </form>
+  <h4>Apoteke:</h4>
+  <table class="table table-hover table-bordered table-striped">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Redni broj</th>
+        <th>Naziv</th>
+        <th>Adresa</th>
+        <th>Opis</th>
+        <th>Profit</th>
+        <th>Cena</th>
+        <th>Dodaj administratora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let clinic of clinics'>
+        <td>{{ clinic.id }}</td>
+        <td>{{ clinic.name }}</td>
+        <td>{{ clinic.address }}</td>
+        <td>{{ clinic.description }}</td>
+        <td>{{ clinic.profit }}</td>
+        <td>{{ clinic.pricelist }}</td>
+        <td><a class="btn btn-outline-success" (click)="addAdminForm(clinic)" style="font-size: 14px;">Dodaj</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmitAdmin() && form.valid" novalidate *ngIf="this.addAdminClicked">
+      <h4>Dodaj administratora za apoteku #{{ clinicToAddNewAdmin.id }}</h4>
+      <div class="form-row">
+        <div class="col-md-4">
+          <label for="usernameCA">Korisničko ime:</label>
+          <input formControlName="Username"
+            [ngClass]="{'is-invalid': form.get('Username').touched && form.get('Username').invalid}"
+            class="form-control" type="text" class="form-control" id="usernameCA" name="username"
+            placeholder="Korisničko ime" [(ngModel)]="clinicAdministrator.username" required>
+        </div>
+        <div class="col-md-4">
+          <label for="passwordCA">Lozinka:</label>
+          <input formControlName="Password"
+            [ngClass]="{'is-invalid': form.get('Password').touched && form.get('Password').invalid}"
+            class="form-control" type="password" class="form-control" id="passwordCA" placeholder="Lozinka"
+            [(ngModel)]="clinicAdministrator.password" name="passwordCA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="firstNameCA">Ime:</label>
+          <input formControlName="firstNameCA"
+            [ngClass]="{'is-invalid': form.get('firstNameCA').touched && form.get('firstNameCA').invalid}"
+            class="form-control" type="text" class="form-control" id="firstNameCA" placeholder="Ime"
+            [(ngModel)]="clinicAdministrator.firstName" name="firstNameCA" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="lastNameCA">Prezime:</label>
+          <input formControlName="lastNameCA"
+            [ngClass]="{'is-invalid': form.get('lastNameCA').touched && form.get('lastNameCA').invalid}"
+            class="form-control" type="text" class="form-control" id="lastNameCA" placeholder="Prezime"
+            [(ngModel)]="clinicAdministrator.lastName" name="lastNameCA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="emailCA">Email:</label>
+          <input formControlName="emailCA"
+            [ngClass]="{'is-invalid': form.get('emailCA').touched && form.get('emailCA').invalid}" class="form-control"
+            type="text" class="form-control" id="emailCA" placeholder="Email" [(ngModel)]="clinicAdministrator.email"
+            name="emailCA" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="addressCA">Adresa:</label>
+          <input formControlName="addressCA"
+            [ngClass]="{'is-invalid': form.get('addressCA').touched && form.get('addressCA').invalid}"
+            class="form-control" type="text" class="form-control" id="addressCA" placeholder="Adresa"
+            [(ngModel)]="clinicAdministrator.address" name="addressCA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="cityCA">Grad:</label>
+          <input formControlName="cityCA"
+            [ngClass]="{'is-invalid': form.get('cityCA').touched && form.get('cityCA').invalid}" class="form-control"
+            type="text" class="form-control" id="cityCA" placeholder="Grad" [(ngModel)]="clinicAdministrator.city"
+            name="cityCA" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="countryCA">Država:</label>
+          <input formControlName="countryCA"
+            [ngClass]="{'is-invalid': form.get('countryCA').touched && form.get('countryCA').invalid}"
+            class="form-control" type="text" class="form-control" id="countryCA" placeholder="Država"
+            [(ngModel)]="clinicAdministrator.country" name="countryCA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="mobileNumberCA">Kontakt telefon:</label>
+          <input formControlName="mobileNumberCA"
+            [ngClass]="{'is-invalid': form.get('mobileNumberCA').touched && form.get('mobileNumberCA').invalid}"
+            class="form-control" type="number" class="form-control" id="mobileNumberCA" placeholder="Kontakt telefon"
+            [(ngModel)]="clinicAdministrator.mobileNumber" name="mobileNumberCA" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="jmbgCA">Jmbg:</label>
+          <input formControlName="jmbgCA"
+            [ngClass]="{'is-invalid': form.get('jmbgCA').touched && form.get('jmbgCA').invalid}" class="form-control"
+            type="number" class="form-control" id="jmbgCA" placeholder="Jmbg" [(ngModel)]="clinicAdministrator.jmbg"
+            name="jmbgCA" required>
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="!form.valid" type="submit">Sačuvaj</button>
+    </form>
+  </div>
+  
+  
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

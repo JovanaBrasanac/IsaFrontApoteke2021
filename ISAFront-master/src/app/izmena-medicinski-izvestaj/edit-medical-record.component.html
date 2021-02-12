@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light "style="background-color:rgb(117, 197, 197, 0.5);">
+  <a disabled class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" disabled data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacistHomePage']">Početna <span
+            class="sr-only" disabled>(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit() && form.valid">
+    <h4 style="margin:30px;">Izmeni medicinski izveštaj:</h4>
+    <div class="form-row">
+      <div class="col-2 form-group">
+        <small>Krvna grupa</small>
+        <input formControlName="bloodType" type="text" class="form-control" [(ngModel)]="medicalRecord.bloodType"
+          [ngClass]="{'is-invalid': form.get('bloodType').touched && form.get('bloodType').invalid}"
+          placeholder="Krvna grupa">
+      </div>
+      <div class="form-group col-2">
+        <small>Dioptrija</small>
+        <input formControlName="diopter" type="text" class="form-control" [(ngModel)]="medicalRecord.diopter"
+          [ngClass]="{'is-invalid': form.get('diopter').touched && form.get('diopter').invalid}"
+          placeholder="Dioptrija">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2">
+        <small>Visina</small>
+        <div class="input-group">
+          <input formControlName="height" type="number" class="form-control" [(ngModel)]="medicalRecord.height"
+            [ngClass]="{'is-invalid': form.get('height').touched && form.get('height').invalid}" placeholder="Visina">
+          <div class="input-group-append">
+            <span class="input-group-text">cm</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-2">
+        <small>Težina</small>
+        <div class="input-group">
+          <input formControlName="weight" type="number" class="form-control" [(ngModel)]="medicalRecord.weight"
+            [ngClass]="{'is-invalid': form.get('weight').touched && form.get('weight').invalid}" placeholder="Težina">
+          <div class="input-group-append">
+            <span class="input-group-text">kg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-success" [disabled]="!form.valid" style="margin-top:30px;" type="submit">Sačuvaj
+        izmene</button>
+    </div>
+  </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2020Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

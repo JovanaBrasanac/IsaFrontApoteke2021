@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" routerLinkActive='active' [routerLink]="['/pharmacistHomePage']" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacistHomePage']">Početna<span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacistHomePage']">Profil<span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pretraži" aria-label="Pretraga">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraži</button>
+    </form>
+  </div>
+</nav>
+<h2 style="margin: 30px;" class="text-center">Farmaceut</h2>
+<div class="container">
+  <div class="card" style="max-width: 540px; " style="background-color:rgb(117, 197, 197, 0.5);">
+    <div class="row ">
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text">Korisničko ime : {{user.username}} </p>
+          <p class="card-text">Ime: {{doctor.firstName}} </p>
+          <p class="card-text">Prezime: {{doctor.lastName}} </p>
+          <p class="card-text">Email: {{doctor.email}} </p>
+          <p class="card-text">Adresa: {{doctor.address}} </p>
+          <p class="card-text">Grad : {{doctor.city}} </p>
+          <p class="card-text">Država : {{doctor.country}} </p>
+          <p class="card-text">Kontakt telefon : {{doctor.mobileNumber}} </p>
+          <p class="card-text">Jmbg : {{doctor.jmbg}} </p>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline-info" (click)="change(true)">Izmeni lozinku</button>
+    <button type="button" class="btn btn-outline-info" (click)="change2(true)">Izmeni informacije</button>
+  </div>
+</div>
+<div *ngIf="this.isButtonVisible">
+  <form id="newform" style="max-width: 540px;">
+    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+    <div class="form-group">
+      <label for="oldPassword">Stara lozinka</label>
+      <input type="password" class="form-control" [(ngModel)]="newDoctor.oldPassword" name="oldPassword"
+        aria-describedby="emailHelp" placeholder="Unesite staru lozinku">
+    </div>
+    <div class="form-group">
+      <label for="newPassword">Nova lozinka</label>
+      <input type="password" [(ngModel)]="newDoctor.password" class="form-control" name="newPassword"
+        placeholder="Unesite novu lozinku">
+    </div>
+    <button type="submit" (click)="submitNewInfo()" class="btn btn-success">Sačuvaj izmene</button>
+  </form>
+</div>
+<div *ngIf="this.isButtonVisible2">
+  <form id="newform" style="max-width: 540px;">
+    <div class="form-group">
+      <label for="name">Ime</label>
+      <input type="text" [(ngModel)]="newDoctor.firstName" name="newName" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="last">Prezime</label>
+      <input type="text" class="form-control" [(ngModel)]="newDoctor.lastName" name="newLast">
+    </div>
+    <div class="form-group">
+      <label for="city">Grad</label>
+      <input type="text" class="form-control" [(ngModel)]="newDoctor.city" name="newCity">
+    </div>
+    <div class="form-group">
+      <label for="country">Država</label>
+      <input type="text" [(ngModel)]="newDoctor.country" name="newCountry" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="newDoctor.email" name="newEmail" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="phone">Kontakt telefon</label>
+      <input type="number" class="form-control" [(ngModel)]="newDoctor.mobileNumber" name="newPhone">
+    </div>
+    <button type="submit" (click)="submitNewInfo()" class="btn btn-success">Sačuvaj izmene</button>
+  </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

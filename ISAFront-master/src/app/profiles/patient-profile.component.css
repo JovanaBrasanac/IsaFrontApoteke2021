@@ -1,0 +1,24 @@
+#adminLinks{
+    margin-top: 30px;
+    
+}
+a:hover {
+    text-decoration: none;
+}
+footer{
+    margin-top: 200px;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
+#newform, button, #newForm {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+
+

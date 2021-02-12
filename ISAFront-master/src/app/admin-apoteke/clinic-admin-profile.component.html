@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg navbar-light "style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-home-page']">Početna <span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-profile']">Profil<span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraga</button>
+    </form>
+  </div>
+</nav>
+<h2 style="margin: 30px;" class="text-center">Administator apoteke</h2>
+<div class="container">
+  <div class="card" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Informacije</h5>.
+          <p class="card-text">Korisničko ime : {{user.username}} </p>
+          <p class="card-text">Ime: {{cadmin.firstName}} </p>
+          <p class="card-text">Prezime: {{cadmin.lastName}} </p>
+          <p class="card-text">Email: {{cadmin.email}} </p>
+          <p class="card-text">Adresa: {{cadmin.address}} </p>
+          <p class="card-text">Grad : {{cadmin.city}} </p>
+          <p class="card-text">Država : {{cadmin.country}} </p>
+          <p class="card-text">Kontakt telefon : {{cadmin.mobileNumber}} </p>
+          <p class="card-text">Jmbg : {{cadmin.jmbg}} </p>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline-info" (click)="change(true)">Izmeni lozinku</button>
+    <button type="button" class="btn btn-outline-info" (click)="change2(true)">Izmeni informacije</button>
+  </div>
+</div>
+<div *ngIf="this.isButtonVisible">
+  <form id="newform" style="max-width: 540px;">
+    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+    <div class="form-group">
+      <label for="oldPassword">Stara lozinka</label>
+      <input type="password" class="form-control" [(ngModel)]="newAdmin.oldPassword" name="oldPassword"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="newPassword">Nova lozinka</label>
+      <input type="password" [(ngModel)]="newAdmin.password" class="form-control" name="newPassword">
+    </div>
+    <button type="submit" (click)="submitNewInfo()" class="btn btn-primary">Sačuvaj izmenu</button>
+  </form>
+</div>
+<div *ngIf="this.isButtonVisible2">
+  <form id="newform" style="max-width: 540px;">
+    <div class="form-group">
+      <label for="name">Ime</label>
+      <input type="text" [(ngModel)]="newAdmin.firstName" name="newName" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="last">Prezime</label>
+      <input type="text" class="form-control" [(ngModel)]="newAdmin.lastName" name="newLast">
+    </div>
+    <div class="form-group">
+      <label for="city">Grad</label>
+      <input type="text" class="form-control" [(ngModel)]="newAdmin.city" name="newCity">
+    </div>
+    <div class="form-group">
+      <label for="country">Država</label>
+      <input type="text" [(ngModel)]="newAdmin.country" name="newCountry" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="newAdmin.email" name="newEmail" class="form-control">
+      <small id="emailHelp" class="form-text text-muted">Unesite email.</small>
+    </div>
+    <div class="form-group">
+      <label for="phone">Kontakt telefon</label>
+      <input type="number" class="form-control" [(ngModel)]="newAdmin.mobileNumber" name="newPhone">
+    </div>
+    <button type="submit" (click)="submitNewInfo()" class="btn btn-primary">Sačuvaj izmene</button>
+  </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

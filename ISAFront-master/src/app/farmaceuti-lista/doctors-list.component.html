@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacies']">Nazad <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div>
+    <h3 style="padding-bottom: 10px; padding-top: 20px;">
+      Odabrali ste {{ this.imeKlinike }} kliniku, za datum: {{ this.datumZakazivanja }}
+    </h3>
+    <div class="search-hero">
+      <input class="form-control " type="search" name="search" [(ngModel)]="searchText" placeholder="Pretraga doktora"
+        style="width: 450px; margin: 10px;">
+    </div>
+    <table class="table table-striped table-hover table-striped">
+      <thead style="background-color:rgb(117, 197, 197, 0.5);">
+        <tr>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Ocena</th>
+          <th>Grad</th>
+          <th>Država</th>
+          <th>Email</th>
+          <th style="width: 174px;">Odaberite datum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctors | filter:searchText">
+          <td>{{doctor.firstName}}</td>
+          <td>{{doctor.lastName}}</td>
+          <td>{{doctor.review}}</td>
+          <td>{{doctor.city}}</td>
+          <td>{{doctor.country}}</td>
+          <td>{{doctor.email}}</td>
+          <td><a class="btn btn-success" (click)="addTimeForm(doctor)" style="font-size: 14px; ">Odaberi</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="background-color: rgb(217, 236, 236, 0.7); padding: 2em; border-radius: 10px;"
+    *ngIf="this.selectTimeClicked">
+    <div style="padding-bottom: 10px; padding-top: 20px;">
+      Odabrani doktor: {{ this.selectedDoctor.firstName }}.
+      <br>
+      <br>
+      Odaberite vreme:
+      <input type="time" id="appt" name="appt" value="{{this.now}}" [(ngModel)]="this.now" min="{{this.minVreme}}"
+        max="{{this.maxVreme}}" required>
+      <br>
+      <br>
+      <small *ngIf='upozorenjeZaRadnoVreme' style="color: red;">Radno vreme doktora je od {{this.minVreme}} do
+        {{this.maxVreme}}</small>
+    </div>
+    <br>
+    <a class="btn btn-outline-success" (click)="redirectToNewAppointment()" style="font-size: 14px; ">Zakaži pregled</a>
+  </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

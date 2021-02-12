@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-home-page']">Početna
+                    <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLinkActive='active'
+                    [routerLink]="['/sysadmin-home-page']">Profil<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <app-logout></app-logout>
+    </div>
+</nav>
+<div class="container" fxLayout="row" fxLayoutAlign="center center"
+    style="margin-top: 20px; height: 100vh; width: 100vh">
+    <h4>Unesite podatke o sobi:</h4>
+    <form class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="duration">Broj sobe :</label>
+            <textarea class="form-control" rows="1" placeholder="1" [(ngModel)]="room.room_number"
+                name="clinicDescription" id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Naziv sobe:</label>
+            <textarea class="form-control" rows="2" placeholder="Naziv sobe" [(ngModel)]="room.name"
+                name="clinicDescription" id="description"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">Dodaj sobu</button>
+    </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <b>Jovana Brašanac</b>
+    </div>
+</footer>

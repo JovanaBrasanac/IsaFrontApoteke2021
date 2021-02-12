@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light "style="background-color:rgb(117, 197, 197, 0.5);">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-home-page']">Početna
+                    <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <app-logout></app-logout>
+    </div>
+</nav>
+<div class="container" fxLayout="row" fxLayoutAlign="center center"
+    style="margin-top: 20px; height: 100vh; width: 100vh">
+    <h4>Unesite podatke o novom farmaceutu:</h4>
+    <form [formGroup]="form3" (ngSubmit)="onSubmit() && form3.valid" class="needs-validation" >
+        <div class="form-group">
+            <label for="duration"> Korisničko ime :</label>
+            <textarea formControlName="Username"
+                [ngClass]="{'is-invalid': form3.get('Username').touched && form3.get('Username').invalid}"
+                class="form-control" rows="1" placeholder="Korisničko ime" [(ngModel)]="doctor.username"
+                name="clinicDescription" id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="firstNameCA">Ime:</label>
+            <textarea formControlName="firstNameCA"
+                [ngClass]="{'is-invalid': form3.get('firstNameCA').touched && form3.get('firstNameCA').invalid}"
+                class="form-control" rows="2" placeholder="Ime" [(ngModel)]="doctor.firstName" name="firstNameCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="lastNameCA">Prezime:</label>
+            <textarea formControlName="lastNameCA"
+                [ngClass]="{'is-invalid': form3.get('lastNameCA').touched && form3.get('lastNameCA').invalid}"
+                class="form-control" rows="2" placeholder="Prezime" [(ngModel)]="doctor.lastName" name="lastNameCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="cityCA">Grad:</label>
+            <textarea formControlName="cityCA"
+                [ngClass]="{'is-invalid': form3.get('cityCA').touched && form3.get('cityCA').invalid}"
+                class="form-control" rows="2" placeholder="Grad" [(ngModel)]="doctor.city" name="cityCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="countryCA">Država:</label>
+            <textarea formControlName="countryCA"
+                [ngClass]="{'is-invalid': form3.get('countryCA').touched && form3.get('countryCA').invalid}"
+                class="form-control" rows="2" placeholder="Država" [(ngModel)]="doctor.country" name="countryCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="emailCA">Email :</label>
+            <textarea formControlName="emailCA"
+                [ngClass]="{'is-invalid': form3.get('emailCA').touched && form3.get('emailCA').invalid}"
+                class="form-control" rows="2" placeholder="Email" [(ngModel)]="doctor.email" name="emailCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="jmbgCA">Jmbg :</label>
+            <textarea formControlName="jmbgCA"
+                [ngClass]="{'is-invalid': form3.get('jmbgCA').touched && form3.get('jmbgCA').invalid}"
+                class="form-control" rows="2" placeholder="Jmbg" [(ngModel)]="doctor.jmbg" name="jmbgCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="addressCA">Adresa :</label>
+            <textarea formControlName="addressCA"
+                [ngClass]="{'is-invalid': form3.get('addressCA').touched && form3.get('addressCA').invalid}"
+                class="form-control" rows="2" placeholder="Adresa" [(ngModel)]="doctor.address" name="addressCA"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Start">Početak radnog vremena :</label>
+            <textarea formControlName="Start"
+                [ngClass]="{'is-invalid': form3.get('Start').touched && form3.get('Start').invalid}" class="
+                form-control" rows="2" placeholder="Početak" [(ngModel)]="doctor.pocetakRadnogVremena" name="Start"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="End">Kraj radnog vremena :</label>
+            <textarea formControlName="End"
+                [ngClass]="{'is-invalid': form3.get('End').touched && form3.get('End').invalid}" class=" form-control"
+                rows="2" placeholder="Kraj" [(ngModel)]="doctor.krajRadnogVremena" name="End"
+                id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="mobileNumberCA">Kontakt telefon :</label>
+            <textarea formControlName="mobileNumberCA"
+                [ngClass]="{'is-invalid': form3.get('mobileNumberCA').touched && form3.get('mobileNumberCA').invalid}"
+                class="form-control" rows="2" placeholder="Mobilni" [(ngModel)]="doctor.mobileNumber"
+                name="mobileNumberCA" id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Password">Lozinka :</label>
+            <textarea formControlName="Password"
+                [ngClass]="{'is-invalid': form3.get('Password').touched && form3.get('Password').invalid}"
+                class="form-control" rows="2" placeholder="Lozinka" [(ngModel)]="doctor.password" name="Password"
+                id="Password"></textarea>
+        </div>
+        <button [disabled]="!form3.valid" class="btn btn-success" type="submit">Dodaj doktora</button>
+    </form>
+</div>

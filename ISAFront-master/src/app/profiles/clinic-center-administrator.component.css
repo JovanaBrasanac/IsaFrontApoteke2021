@@ -1,0 +1,36 @@
+#adminLinks{
+    margin-top: 30px;
+    
+}
+a:hover {
+    text-decoration: none;
+    cursor:pointer;
+    color: rgb(49, 143, 146);
+}
+footer{
+    margin-top: 200px;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+    
+}
+#newform, button, #passwordForm {
+    margin: 0 auto; 
+    margin-top: 30px;
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+#form {
+    
+    margin: 0 auto; 
+    margin-top: 30px;
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+
+

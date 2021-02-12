@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Promena adrese klinike</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="duration"> Adresa :</label>
+            <textarea class="form-control" rows="1" placeholder="Adresa" name="clinicDescription" id="description"
+                [(ngModel)]="mapData.address"></textarea>
+            <label for="duration"> Dužina :</label>
+            <textarea class="form-control" rows="1" placeholder="Koordinate" name="clinicLong" id="description"
+                [(ngModel)]="mapData.longitude"></textarea>
+            <label for="duration"> Širina :</label>
+            <textarea rows="1" class="form-control" placeholder="Koordinate" name="clinicLat" id="description"
+                [(ngModel)]="mapData.latitude"></textarea>
+            <input class="btn btn-success" style="margin: 10px;" value="Change" (click)=change()>
+            <input class="btn btn-alert" style="margin: 10px;" value="Cancel" (click)="onClose()">
+        </div>
+    </div>
+</div>

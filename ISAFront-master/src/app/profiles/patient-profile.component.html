@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/patient-home-page']">Početna <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <app-logout></app-logout>
+</nav>
+<h2 style="margin: 30px;" class="text-center">Vaš profil </h2>
+<div class="container" >
+  <div class="card" style="max-width: 540px;" style="background-color:rgb(117, 197, 197, 0.5);">
+    <div class="row no-gutters">
+      <div class="col-md-8" >
+        <div class="card-body">
+          <p class="card-text">Ime: {{ patient?.firstName }}</p>
+          <p class="card-text">prezime: {{ patient?.lastName }}</p>
+          <p class="card-text">Email: {{ patient?.email }}</p>
+          <p class="card-text">Adresa: {{ patient?.address }}</p>
+          <p class="card-text">Grad: {{ patient?.city }}</p>
+          <p class="card-text">Država: {{ patient?.country }}</p>
+          <p class="card-text">Kontakt telefon: {{ patient?.mobileNumber }}</p>
+          <p class="card-text">Jmbg: {{ patient?.jmbg }}</p>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success" (click)="change(true)">Izmeni</button>
+  </div>
+</div>
+<div *ngIf="this.isButtonVisible">
+  <form id="newform" style="max-width: 540px; background-color:rgb(117, 197, 197, 0.5);" >
+    <div class="form-group">
+      <label for="name">Ime</label>
+      <input type="text" class="form-control" [(ngModel)]="newPatient.firstName" name="firstNameToChange"
+        placeholder="Unesite ime">
+    </div>
+    <div class="form-group">
+      <label for="last">Prezime</label>
+      <input type="text" class="form-control" [(ngModel)]="newPatient.lastName" name="lastNameToChange"
+        placeholder="Unesite prezime">
+    </div>
+    <div class="form-group">
+      <label for="last">Grad</label>
+      <input type="text" class="form-control" [(ngModel)]="newPatient.city" name="cityToChange"
+        placeholder="Unesite grad">
+    </div>
+    <div class="form-group">
+      <label for="last">Adresa</label>
+      <input type="text" class="form-control" [(ngModel)]="newPatient.address" name="addressToChange"
+        placeholder="Unesite adresu">
+    </div>
+    <div class="form-group">
+      <label for="last">Država</label>
+      <input type="text" class="form-control" [(ngModel)]="newPatient.country" name="countryToChange"
+        placeholder="Unesite državu">
+    </div>
+    <div class="form-group">
+      <label for="last">Kontakt telefon</label>
+      <input type="number" class="form-control" [(ngModel)]="newPatient.mobileNumber" name="mobileNumberToChange"
+        placeholder="Unesite mobilni">
+    </div>
+    <button type="submit" (click)="change1(false)" class="btn btn-success">Sačuvaj izmene</button>
+  </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

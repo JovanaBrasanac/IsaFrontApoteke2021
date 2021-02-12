@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5)">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-home-page']">Početna
+                    <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active'
+                    [routerLink]="['/pharmacyadmin-profile']">Profil
+                    <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="d-flex justify-content-center">
+    <form class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+        <div [formGroup]="form" class="form-group">
+            <input formControlName="date" (click)="d.toggle()" type="text" class="form-control"
+                placeholder="Odaberite datum" style="width: 18rem;" ngbDatepicker #d="ngbDatepicker"
+                [minDate]="{year: this.year, month: this.month, day: this.day}" [(ngModel)]="this.date1"
+                name="dateStart" [ngClass]="{'is-invalid': form.get('date').touched && form.get('date').invalid}" />
+            <div class="invalid-feedback">Datum je obavezan!</div>
+        </div>
+        <div class="form-group">
+            <label for="time">Odaberite vreme:</label>
+            <form>
+                <div class="form-check" *ngFor="let time of valueTime">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="time1"
+                        (change)="inputChangeHandler($event)" value="{{time}}" checked>
+                    <label class="form-check-label" for="time1">
+                        {{time}}
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="form-group">
+            <label for="description">Opis:</label>
+            <textarea class="form-control" rows="5" col="5" placeholder="Opis" [(ngModel)]="appointment.description"
+                name="clinicDescription" id="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Cena:</label>
+            <br>
+            <input type="number" [(ngModel)]="appointment.price" name="clinicPrice" id="price">
+        </div>
+        <button class="btn btn-success" type="submit">Dalje</button>
+    </form>
+</div>
+</div>
+<div *ngIf="this.addRoomClicked" class="container">
+    <h4>Slobodni dermatolozi za pregled : #{{clickedAppointment.id}}
+        <mat-form-field>
+            <input matInput type="datetime-local" value="{{clickedAppointment.date}}" [readonly]="!editable"
+                name="dateAppointment">
+        </mat-form-field>
+    </h4>
+    <div *ngIf="this.showMessage">Nema slobodnih dermatologa!</div>
+    <div *ngIf="!this.showMessage" class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off">
+    </div>
+    <div *ngIf="!this.showMessage" class="row">
+        <div class="card col-4-ld mr-4 mt-4" *ngFor="let room of doctors | filter:searchText"
+            style="width: 14rem;margin: 10px;">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{room.firstName}}</h5>
+                <h6>{{room.lastName}}</h6>
+                <h6>{{room.rating}}</h6>
+                <p class="card-text">
+                </p>
+                <button class="btn btn-outline-success" (click)="chooseDoctor(room)">Odaberite ovog dermatologa</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.showMessage" class="row">
+        <div class="card" style="width: 20rem;margin: 10px;">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{availableRoom.name}}</h5>
+                <h6>No. {{availableRoom.room_num}}</h6>
+                <p class="card-text">
+                    <mat-form-field>
+                        <input matInput type="datetime-local" value="{{availableRoom.date}}" [readonly]="!editable"
+                            name="dateAppointment">
+                    </mat-form-field>
+                </p>
+                <button class="btn btn-outline-success" (click)="chooseDoctor2(availableRoom.id)">Odaberite ovog dermatologa</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <b>Jovana Brašanac</b>
+    </div>
+</footer>

@@ -1,0 +1,6 @@
+<div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+  <button class="btn btn-light mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">
+    {{ username }}</button>
+  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+    <button (click)="logout()" ngbDropdownItem>Odjavite se</button>
+  </div>

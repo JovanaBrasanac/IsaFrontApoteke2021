@@ -1,0 +1,16 @@
+<div>
+  <form id="form" style="width: 18rem;">
+    <h6>Zahtevi za godišnji odmor</h6>
+    <div class="form-group">
+      <input type="text" placeholder="Unesite datum" ngbDatepicker #d="ngbDatepicker"
+        [minDate]="{year: this.year, month: this.month, day: this.day}" [(ngModel)]="this.date1" name="dateStart" />
+      <button class="btn btn-secondary btn-sm" (click)="d.toggle()" > Početak</button>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Unesite datum" ngbDatepicker #d1="ngbDatepicker" [(ngModel)]="this.date2" [minDate]="this.date1"
+        name="dateEnd" />
+      <button class="btn btn-secondary btn-sm" (click)="d1.toggle()" > Kraj</button>
+    </div>
+    <button type="submit" (click)="sendHolidayRequest()" class="btn btn-success">Pošalji zahtev</button>
+  </form>
+</div>

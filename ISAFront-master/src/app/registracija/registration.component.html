@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/login']">Nazad<span
+                        class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="main" *ngIf="this.isButtonVisible">
+    <section class="signup" >
+        <div class="container">
+            <div class="signup-content"  style="background-color:rgb(117, 197, 197, 0.5);">
+                <form method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Registracija pacijenta</h2>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.username" name="username" #username="ngModel" id="username"
+                            type="text" class="form-input" placeholder="Korisničko ime" />
+                        <div class="alert alert-danger" *ngIf="username.touched && !username.valid">Obavezno polje!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.firstName" name="name1" #name1="ngModel" id="name1"
+                            type="text" class="form-input" placeholder="Ime" />
+                        <div class="alert alert-danger" *ngIf="name1.touched && !name1.valid">Obavezno polje!</div>
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.lastName" name="lastName" #lastName="ngModel" id="lastName"
+                            type="text" class="form-input" placeholder="Prezime" />
+                        <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Obavezno polje!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.email" name="email" id="email" #email="ngModel"
+                            type="email" class="form-input" placeholder="Email" />
+                        <div class="alert alert-danger" *ngIf="email.touched && !email.valid">Obavezno polje!</div>
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.password" name="password" id="password" #password="ngModel"
+                            type="password" class="form-input" placeholder="Lozinka" />
+                        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">Obavezno polje!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.repassword" name="re_password" id="re_password"
+                            #re_password="ngModel" type="password" class="form-input" placeholder="Potvrdi lozinku" />
+                        <div class="alert alert-danger" *ngIf="re_password.touched && !re_password.valid">Obavezno
+                            polje!</div>
+                        <div class="alert alert-danger" *ngIf="passRepassNotValid">Polje lozinke i potvrde moga biti
+                            isto!</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="patient.address" class="form-input" name="address" id="address"
+                            placeholder="Adresa" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="patient.city" class="form-input" name="city" id="city"
+                            placeholder="Grad" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" [(ngModel)]="patient.country" name="country" id="country"
+                            placeholder="Država" />
+                    </div>
+                    <div class="form-group">
+                        <input required [(ngModel)]="patient.jmbg" ngModel name="insuranceNumber" id="insuranceNumber"
+                            #insuranceNumber="ngModel" type="number" class="form-input" placeholder="Jmbg" />
+                        <div class="alert alert-danger" *ngIf="insuranceNumber.touched && !insuranceNumber.valid">
+                            Obavezno polje!</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-input" [(ngModel)]="patient.mobileNumber" name="phoneNumber"
+                            id="phoneNumer" placeholder="Kontakt telefon" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" (click)="registrationClick()"
+                            routerLinkActive='active' value="Registrujte se" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<router-outlet></router-outlet>

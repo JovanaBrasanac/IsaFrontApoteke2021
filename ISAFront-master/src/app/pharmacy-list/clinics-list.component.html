@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/patient-home-page']">Početna <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div style="padding-top: 10px;" class="container">
+  <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" style="padding-bottom: 20px; margin-top: 10px;">
+    <div style="background-color: rgb(117, 197, 197, 0.5); padding: 2em; border-radius: 10px;">
+      <h3 style="padding-bottom: 20px;">
+        Pretraga dostupnih apoteka:
+      </h3>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="date" min="{{ this.now }}" [(ngModel)]="appointment.date" name="dateAppointment"
+            placeholder="Pretraga datuma za pregled">
+        </mat-form-field>
+        <br>
+        <small *ngIf='flagForSearch' style="color: red;">Datum i vreme su obavezni!</small>
+      </div>
+      <div class="form-group">
+        <label>Tip pregleda:</label>
+        <select style="margin-left: 5px;" class="custom-select" (change)="ChangeValue($event)" name="type"
+          [(ngModel)]="appointment.type">
+          <option *ngFor='let types of appointmentTypes' [value]="types.name">{{ types.name }}</option>
+        </select>
+      </div>
+      <button id="search123" class="btn btn-success" type="submit">Pretraži</button>
+    </div>
+  </form>
+  <table id="tableSearch" *ngIf='flagForSearchTable' class="table table-hover table-bordered table-striped" matSort
+    (matSortChange)="sortData1($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Redni broj</th>
+        <th mat-sort-header="name">Naziv</th>
+        <th mat-sort-header="address">Adresa</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="profit">Profit</th>
+        <th mat-sort-header="pricelist">Ocena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let clinic1 of clinics1'>
+        <td>{{ clinic1.id }}</td>
+        <td class="imeKlinike"><a (click)="klinika(clinic1)" href="#" routerLinkActive='active'
+            [routerLink]="['/doctorsList']">{{ clinic1.name }}</a></td>
+        <td>{{ clinic1.address }}</td>
+        <td>{{ clinic1.description }}</td>
+        <td>{{ clinic1.profit }}</td>
+        <td>{{ clinic1.rating }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>Apoteke:</h4>
+  <table class="table table-hover table-striped table-light table-bordered" matSort (matSortChange)="sortData($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Redni broj</th>
+        <th mat-sort-header="name">Naziv</th>
+        <th mat-sort-header="address">Adresa</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="profit">Profit</th>
+        <th mat-sort-header="pricelist">Cena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let clinic of clinics'>
+        <td>{{ clinic.id }}</td>
+        <td>{{ clinic.name }}</td>
+        <td>{{ clinic.address }}</td>
+        <td>{{ clinic.description }}</td>
+        <td>{{ clinic.profit }}</td>
+        <td>{{ clinic.pricelist }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="background-color: rgb(117, 197, 197, 0.5); padding: 1em; border-radius: 10px;">
+    <h5>
+      Odaberite jedan od termina kod dermatologa <a href="#" id="here" routerLinkActive='active'
+        [routerLink]="['/alreadyCreatedApp']">ovde</a>
+    </h5>
+  </div>
+
+
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brasanac</b>
+  </div>
+</footer>

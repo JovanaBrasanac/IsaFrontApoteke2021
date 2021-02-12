@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/patient-home-page']">Početna <span
+              class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div style="padding-top: 10px;" class="container">
+    <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" style="padding-bottom: 20px; margin-top: 10px;">
+      <div style="background-color: rgb(117, 197, 197, 0.5); padding: 2em; border-radius: 10px;">
+        <h3 style="padding-bottom: 20px;">
+          Odaberite apoteku za pregled lekova i akcija/promocija:
+        </h3>
+      </div>
+    </form>
+    <table id="tableSearch"  class="table table-hover table-bordered table-striped" matSort
+      (matSortChange)="sortData1($event)">
+      <thead style="background-color:rgb(117, 197, 197, 0.5);">
+        <tr>
+          <th>Redni broj</th>
+          <th mat-sort-header="name">Naziv</th>
+          <th mat-sort-header="address">Adresa</th>
+          <th mat-sort-header="description">Opis</th>
+          <th mat-sort-header="profit">Profit</th>
+          <th mat-sort-header="pricelist">Ocena</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let clinic1 of clinics'>
+          <td>{{ clinic1.id }}</td>
+          <td class="imeKlinike"><a (click)="klinika(clinic1)" href="#" routerLinkActive='active'
+              [routerLink]="['/medicationsList']">{{ clinic1.name }}</a></td>
+          <td>{{ clinic1.address }}</td>
+          <td>{{ clinic1.description }}</td>
+          <td>{{ clinic1.profit }}</td>
+          <td>{{ clinic1.rating }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+
+  <div style="padding-top: 10px;" class="container">
+    <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" style="padding-bottom: 20px; margin-top: 10px;">
+      <div style="background-color: rgb(117, 197, 197, 0.5); padding: 2em; border-radius: 10px;">
+        <h3 style="padding-bottom: 20px;">
+          Vase rezervacije lekova:
+        </h3>
+      </div>
+    </form>
+    <table id="tableSearch2"  class="table table-hover table-bordered table-striped" matSort
+      (matSortChange)="sortData1($event)">
+      <thead style="background-color:rgb(117, 197, 197, 0.5);">
+        <tr>
+          <th>Redni broj</th>
+          <th mat-sort-header="name">Lek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let drugR of drugRs'>
+          <td>{{ drugR.id }}</td>
+          <td>{{ drugR.drug.name }}</td>
+          <td><a class = "btn btn-sm text-white btn-danger" (click)="cancel(drugR)">Otkazi</a></td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  <footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+      <b>Jovana Brasanac</b>
+    </div>
+  </footer>

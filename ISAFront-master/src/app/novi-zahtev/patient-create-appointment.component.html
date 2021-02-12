@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacies']">Nazad
+                    <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h4>Zakazivanje pregleda:</h4>
+    <form class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+        <h5>Odabrali ste:</h5>
+        <p>Klinika: {{this.imeKlinike}}</p>
+        <p>Doktor: {{this.doctor.firstName}}</p>
+        <p>Datum: {{this.datumZakazivanja}}</p>
+        <p>Vreme: {{this.vremeZakazivanja}}</p>
+        <div class="form-group">
+            <label for="duration">Trajanje (sati):</label>
+            <textarea class="form-control" rows="1" placeholder="1" [(ngModel)]="this.appointment.duration"
+                name="clinicDuration" id="duration"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Opis:</label>
+            <textarea class="form-control" rows="5" placeholder="Opis" [(ngModel)]="this.appointment.description"
+                name="clinicDescription" id="description"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">Zakaži pregled</button>
+    </form>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <b>Jovana Brašanac</b>
+    </div>
+</footer>

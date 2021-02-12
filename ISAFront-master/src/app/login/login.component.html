@@ -1,0 +1,91 @@
+<div class="limiter" *ngIf="this.isVisible">
+    <div class="container-login100">
+        <div class="wrap-login100" style="background-color:rgb(117, 197, 197, 0.5);">
+            <form class="login100-form validate-form">
+                <h2 class="form-title p-b-26">
+                    Dobrodošli
+                </h2>
+                <div id="errorMessage" class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+                <div id="successMessage" class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                    <input id="email" class="input100" type="text" name="email" placeholder="Korisničko ime"
+                        [(ngModel)]="user.username">
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Unesite lozinku">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input id="password" class="input100" type="password" name="pass" placeholder="Lozinka"
+                        [(ngModel)]="user.password">
+                </div>
+                <button id="loginButton" type="submit" name="submit" class="form-submit btn btn-primary" value="Login"
+                    (click)="handleLogin()">Prijavite se</button>
+                <div class="text-center p-t-115 dhaa">
+                    <span class="form-title">
+                        Nemate nalog?
+                    </span>
+                    <a class="form-title" href="#" (click)="change(false)" routerLinkActive='active'
+                        [routerLink]="['/registration']">
+                        Registracija
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <div class="wrap-input100 validate-input">
+            <input id="pharmacy" class="input100" type="text" name="apoteka" placeholder="Pretrazi apoteku"
+            [(ngModel)]="apoteka" (ngModelChange)="getPharmacies()">
+        <table id="tableSearch" class="table table-hover table-bordered table-striped" matSort
+        (matSortChange)="sortData1($event)">
+        <thead style="background-color:rgb(117, 197, 197, 0.5);">
+          <tr>
+            <th>Redni broj</th>
+            <th mat-sort-header="name">Naziv</th>
+            <th mat-sort-header="address">Adresa</th>
+            <th mat-sort-header="description">Opis</th>
+            <th mat-sort-header="profit">Profit</th>
+            <th mat-sort-header="pricelist">Ocena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let clinic1 of clinics1'>
+            <td>{{ clinic1.id }}</td>
+            <td>{{ clinic1.name }}</td>
+            <td>{{ clinic1.address }}</td>
+            <td>{{ clinic1.description }}</td>
+            <td>{{ clinic1.profit }}</td>
+            <td>{{ clinic1.rating }}</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+        <div class="wrap-input100 validate-input">
+            <input id="drug" class="input100" type="text" name="drug" placeholder="Pretrazi lek"
+                [(ngModel)]="lek" (ngModelChange)="getDrugs()">
+        
+        <table id="tableSearch2" class="table table-hover table-bordered table-striped" matSort
+        (matSortChange)="sortData1($event)">
+        <thead style="background-color:rgb(117, 197, 197, 0.5);">
+          <tr>
+            <th mat-sort-header="name">Naziv</th>
+            <th mat-sort-header="address">Kolicina</th>
+            <th mat-sort-header="description">Cena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let clinic1 of drugs'>
+            <td> {{ clinic1.name }} </td>
+            <td>{{ clinic1.quantity }}</td>
+            <td>{{ clinic1.price }}</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+
+    </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <b>Jovana Brasanac</b>
+    </div>
+</footer>

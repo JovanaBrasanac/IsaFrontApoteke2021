@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5)" *ngIf="this.isButtonVisible">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Početna
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Profil<span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-body">
+      <table class="table table-hover table-striped table-light table-bordered" matSort (matSortChange)="sortData($event)">
+        <thead style="background-color:rgb(117, 197, 197, 0.5)">
+          <tr>
+            <th mat-sort-header="name">Korisničko ime</th>
+            <th mat-sort-header="fname">Ime</th>
+            <th mat-sort-header="lname">Prezime</th>
+            <th mat-sort-header="email">Email</th>
+            <th mat-sort-header="address">Adresa</th>
+            <th mat-sort-header="city">Grad</th>
+            <th mat-sort-header="country">Država</th>
+            <th mat-sort-header="mnumber">Kontakt telefon</th>
+            <th mat-sort-header="jmbg">Jmbg</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.username}}</td>
+            <td>{{ patient.firstName}}</td>
+            <td>{{ patient.lastName}}</td>
+            <td>{{ patient.email}}</td>
+            <td>{{ patient.address}}</td>
+            <td>{{ patient.city}}</td>
+            <td>{{ patient.country}}</td>
+            <td>{{ patient.mobileNumber}}</td>
+            <td>{{ patient.jmbg}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+@import '~bootstrap/dist/css/bootstrap.css';
+body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgb(55, 49, 105);
+    font-weight: 400;
+    background: url("./app/slike/slika.jpg") no-repeat center center fixed; ;
+    background-size: cover;
+    padding: 0px 0; }
+html, body { height: 100%; }
+body { margin: 0; font-family: "Times New Roman", Times, serif; }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Times New Roman", Times, serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Times New Roman", Times, serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Times New Roman", Times, serif; }

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Dodaj doktora za operaciju</h5>
+    <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="form-group">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+      <div *ngFor="let data of doctors; let i=index" class="form-control">
+        <label class="checkbox-inline">
+          <input type="checkbox" [value]="data.id" (change)="onCheckboxChange($event)" />
+          {{data.firstName}} {{data.lastName}}
+        </label>
+      </div>
+      <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
+        Obavezno polje.
+      </p>
+      <div *ngIf="this.noDoctors">Nema slobodnih doktora.</div>
+      <div class="modal-footer">
+        <input class="btn btn-success" *ngIf="!this.form.controls['checkArray'].errors?.required" type="submit"
+          value="Dodaj doktora">
+      </div>
+    </form>
+  </div>
+</div>

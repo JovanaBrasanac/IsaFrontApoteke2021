@@ -1,0 +1,173 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/patient-home-page']">Početna <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" id="1">
+  <br>
+  <h4>Izvrsene konsultacije kod farmaceuta:</h4>
+  <table id = "1" class="table table-hover table-striped table-light table-bordered" matSort (matSortChange)="sortData($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th mat-sort-header="date">Datum</th>
+        <th mat-sort-header="time">Vreme</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="duration">Trajanje</th>
+        <th mat-sort-header="type">Tip pregleda</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let appointment of appointments1'>
+        <td>{{ appointment?.date.split("T")[0] }}</td>
+        <td>{{ appointment?.date.split("T")[1] }}</td>
+        <td>{{ appointment?.description }}</td>
+        <td>{{ appointment?.duration }}</td>
+        <td>{{ appointment?.type2.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container" id="2">
+  <h4>Izvrseni pregledi kod dermatologa:</h4>
+  <table class="table table-hover table-striped table-light table-bordered" id= "2" matSort (matSortChange)="sortData1($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th mat-sort-header="date">Datum</th>
+        <th mat-sort-header="time">Vreme</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="duration">Trajanje</th>
+        <th mat-sort-header="type">Tip pregleda</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let appointmentt of dermatology1'>
+        <td>{{ appointmentt?.date.split("T")[0] }}</td>
+        <td>{{ appointmentt?.date.split("T")[1] }}</td>
+        <td>{{ appointmentt?.description }}</td>
+        <td>{{ appointmentt?.duration }}</td>
+        <td>{{ appointmentt?.type2.name }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <br>
+  <h4>Predstojece konsultacije kod farmaceuta:</h4>
+  <table class="table table-hover table-striped table-light table-bordered" matSort (matSortChange)="sortData($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th mat-sort-header="date">Datum</th>
+        <th mat-sort-header="time">Vreme</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="duration">Trajanje</th>
+        <th mat-sort-header="type">Tip pregleda</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let appointment of appointmentsUnfinished'>
+        <td>{{ appointment?.date.split("T")[0] }}</td>
+        <td>{{ appointment?.date.split("T")[1] }}</td>
+        <td>{{ appointment?.description }}</td>
+        <td>{{ appointment?.duration }}</td>
+        <td>{{ appointment?.type2.name }}</td>
+        <td><a class = "btn btn-sm text-white btn-danger" (click)="delete(appointment)">Otkazi</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <h4>Predstojeci pregledi kod dermatologa:</h4>
+  <table class="table table-hover table-striped table-light table-bordered" matSort (matSortChange)="sortData1($event)">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th mat-sort-header="date">Datum</th>
+        <th mat-sort-header="time">Vreme</th>
+        <th mat-sort-header="description">Opis</th>
+        <th mat-sort-header="duration">Trajanje</th>
+        <th mat-sort-header="type">Tip pregleda</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let appointment2 of dermatologyUnfinished'>
+        <td>{{ appointment2?.date.split("T")[0] }}</td>
+        <td>{{ appointment2?.date.split("T")[1] }}</td>
+        <td>{{ appointment2?.description }}</td>
+        <td>{{ appointment2?.duration }}</td>
+        <td>{{ appointment2?.type2.name }}</td>
+        <td><a class = "btn btn-sm text-white btn-danger" (click)="cancel(appointment2)">Otkazi</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" style="background-color: rgb(117, 197, 197, 0.5); padding: 2em; border-radius: 10px;">
+  <h3 style="padding-bottom: 20px;">
+    Možete oceniti dermatologe/farmaceute:
+  </h3>
+  <table class="table table-hover table-light table-striped">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Ime</th>
+        <th>Ocenili ste sa</th>
+        <th>Ocena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prd of patientRatedDoctor">
+        <td>{{prd.doctor.firstName}}</td>
+        <td>
+          <ngb-rating [(rate)]="prd.ocena" (rateChange)='rateChange(prd)'></ngb-rating>
+          <hr>
+          <pre>Ocena: <b>{{prd.ocena}}</b></pre>
+        </td>
+        <td>
+          {{prd.doctor.review}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br><br>
+<div class="container" style="background-color: rgba(117, 197, 197, 0.5); padding: 2em; border-radius: 10px;">
+  <h3 style="padding-bottom: 20px;">
+    Možete oceniti apoteke:
+  </h3>
+  <table class="table table-hover table-light table-striped">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Apoteka</th>
+        <th>Ocenili ste apoteku sa</th>
+        <th>Ocena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prclinic of patientRatedClinic">
+        <td>{{prclinic.clinic.name}}</td>
+        <td>
+          <ngb-rating [(rate)]="prclinic.ocena" (rateChange)='rateChange1(prclinic)'></ngb-rating>
+          <hr>
+          <pre>Ocena: <b>{{prclinic.ocena}}</b></pre>
+        </td>
+        <td>
+          {{prclinic.clinic.rating}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brasanac</b>
+  </div>
+</footer>

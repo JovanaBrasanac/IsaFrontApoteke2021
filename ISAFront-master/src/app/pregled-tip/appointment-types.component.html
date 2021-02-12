@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacyadmin-home-page']">Početna <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <app-logout></app-logout>
+  </div>
+</nav>
+<div class="container text-center">
+  <h1>{{title}}</h1>
+</div>
+<mat-form-field style="margin: 10px;">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraga narudzbenica">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" style="background-color:rgb(117, 197, 197, 0.5);">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="expandedDetail">
+    <td colspan="2" mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-description">
+          <div class="container">
+            <div class="row">
+            </div>
+            <div class="row">
+              <button (click)="offers(element)" class="button button2" style="margin: 10px;">Pogledaj ponude</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+<div class="container" *ngIf="this.isButtonVisible">
+  <div class="row">
+    <div class="col-4">
+      <label for="description">Novi tip:</label>
+      <textarea class="form-control" rows="1" placeholder="Unesite naziv" name="clinicDescription"
+        [(ngModel)]="newType.name" id="description"></textarea>
+    </div>
+  </div>
+  <div class="row" style="text-align: center;">
+    <div class="col-4">
+      <button style="width: 40%;
+          margin-left: 30%;
+          margin-right: 30%;
+          margin-top: 10px;" class="button button2" type="submit" (click)="addType()">Sačuvaj</button>
+    </div>
+  </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

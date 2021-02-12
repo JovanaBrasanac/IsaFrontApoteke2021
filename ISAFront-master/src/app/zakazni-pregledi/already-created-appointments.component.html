@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacies']">Nazad <span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div style="padding-top: 10px;" class="container">
+  <h4>Odaberite već zakazane termine:</h4>
+  <table class="table table-hover table-striped table-bordered">
+    <thead style="background-color:rgb(117, 197, 197, 0.5);">
+      <tr>
+        <th>Datum</th>
+        <th>Vreme</th>
+        <th>Doktor</th>
+        <th>Tip pregleda</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let app of appointments'>
+        <td>{{ app.date.split('T')[0] }}</td>
+        <td>{{ app.date.split('T')[1] }}</td>
+        <td>{{ app.doctor.firstName }}</td>
+        <td>{{ app.type2.name }}</td>
+        <td><a name={{app.type}} class="btn btn-success" (click)="scheduleApp(app)"
+            style="font-size: 14px; ">Rezerviši</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

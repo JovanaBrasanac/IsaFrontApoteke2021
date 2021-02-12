@@ -1,0 +1,208 @@
+#adminLinks{
+    margin-top: 30px;
+    
+}
+
+footer{
+    margin-top: 200px;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
+#newform, button {
+    margin: 0 auto; 
+    margin-top: 30px;
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+.patientHomePage {
+    padding-top: 20px;
+}
+
+
+
+html{
+    overflow-y: scroll;
+}
+
+body{
+    background-color: transparent;
+   
+    background-size: cover;
+    max-height: 300rem;
+    border: 15px solid transparent !important;
+    -o-border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+       
+       border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.95;
+    display: block;
+}
+
+a:hover{
+  opacity: 1;
+}
+
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+	40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+	60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+	40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+	60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+.main-cont{
+    padding: 0;
+    margin: 0;
+    top: -215px;
+}
+
+.news-row {
+	margin: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.news-block{
+    margin: auto;
+    padding: 0;
+    background-color: transparent;
+    max-width: 1060px;
+    min-width: 100px;
+    border: 20px solid transparent;
+    -o-border-image: linear-gradient(to bottom right,rgb(87, 144, 146, 0.75) 0%,rgba(87, 144, 146, 0.75) 0%,rgba(87, 144, 146, 0.75) 16.6%,rgb(87, 144, 146, 0.75) 37.8%,rgb(87, 144, 146, 0.75) 48.8%,rgb(87, 144, 146, 0.75) 53.1%,rgba(87, 144, 146, 0.75) 79.4%,rgba(87, 144, 146, 0.75) 84.3%) !important;
+       border-image: linear-gradient(to bottom right,rgba(87, 144, 146, 0.75) 0%,rgba(87, 144, 146, 0.75) 0%,rgba(87, 144, 146, 0.75) 16.6%,rgb(87, 144, 146, 0.75) 37.8%,rgb(87, 144, 146, 0.75) 48.8%,rgb(87, 144, 146, 0.75) 53.1%,rgba(87, 144, 146, 0.75) 79.4%,rgba(87, 144, 146, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+    
+}
+
+.underlay{
+  margin: 0;
+  padding: 0;
+  max-height: 600px;
+  max-width: 600px;
+}
+
+.card{
+    margin: 0;
+    width: 600px;
+    max-height: 600px;
+    max-width: 514px;
+    background-color: transparent;
+    border: 20px solid transparent !important;
+    -o-border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgb(145, 189, 214) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+       border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
+    border-image-slice: 1 !important;
+    
+}
+
+.card-block{
+    background-color: transparent;
+    background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%);
+    background-repeat: no-repeat;
+}
+.card-text {
+	display: none;
+}
+
+.card-img-top{
+    width: 300px;
+    height: 250px;
+    background-color: #fff;
+   
+}
+.clinicsImage{
+    background-image: url('./images/pharmacy.jpg');
+    background-size: 300px;
+}
+
+.historyImage{
+    background-image: url('./images/appointments.jpg');
+    background-size: 300px;
+}
+
+.mrImage{
+    background-image: url('./images/medicalReport.jpg');
+    background-size: 300px;
+}
+
+.drugsImage{
+    background-image: url('./images/medications.jpg');
+    background-size: 300px;
+}
+
+.pixel-grid{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: 15;
+  opacity: .2;
+  display: none;
+}
+
+#toggle-grid{
+  position: fixed;
+  top: 150px;
+  right: 2px;
+  z-index: 16;
+  color: white;
+  display: inline-block;
+  font-size: 1.8em;
+  width: 1.8em;
+  text-align: center;
+  line-height: 1.85em;
+  background: #666;
+  border-radius: 50%; 
+  opacity: .3;
+
+  display: none;
+}
+
+#toggle-grid:hover{
+  cursor: pointer;
+  background: repeating-linear-gradient(to bottom right,rgb(0, 0, 0) 0%,rgb(226, 226, 226) 61.4%,rgb(226, 226, 226) 66.9%,rgb(226, 226, 226) 76.6%,rgb(226, 226, 226) 88.7%,rgb(255, 255, 255) 100%);
+}
+
+.orange{
+  color: orange !important;
+  -webkit-box-shadow: 2px 2px 3px #888;
+          box-shadow: 2px 2px 3px #888;
+  opacity: 1 !important;
+}
+
+

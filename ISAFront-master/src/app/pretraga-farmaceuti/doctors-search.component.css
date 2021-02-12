@@ -1,0 +1,73 @@
+.button {
+    background-color: rgb(71, 118, 168);
+     border: none;
+     color: white;
+     padding: 8px 10px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 15px;
+     margin: 4px 2px;
+     cursor: pointer;
+     -webkit-transition-duration: 0.4s; /* Safari */
+     transition-duration: 0.4s;
+   }
+   
+   .button1 {
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   }
+   
+   .button2:hover {
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+   }
+ 
+   table {
+     width: 80%;
+     align-content: center;
+     margin: 10px;
+     background: rgba(240, 242, 247, 0.5);
+   }
+   
+   tr.example-detail-row {
+     height: 0;
+   }
+   
+   tr.example-element-row:not(.example-expanded-row):hover {
+     background: #777;
+   }
+   
+   tr.example-element-row:not(.example-expanded-row):active {
+     background: #efefef;
+   }
+   
+   .example-element-row td {
+     border-bottom-width: 0;
+   }
+   
+   .example-element-detail {
+     overflow: hidden;
+     display: flex;
+   }
+   
+   .example-element-diagram {
+     min-width: 80px;
+     border: 2px solid black;
+     padding: 8px;
+     font-weight: lighter;
+     margin: 8px 0;
+     height: 104px;
+   }
+   
+   .example-element-symbol {
+     font-weight: bold;
+     font-size: 40px;
+     line-height: normal;
+   }
+   
+   .example-element-description {
+     padding: 16px;
+   }
+   
+   .example-element-description-attribution {
+     opacity: 0.5;
+   }

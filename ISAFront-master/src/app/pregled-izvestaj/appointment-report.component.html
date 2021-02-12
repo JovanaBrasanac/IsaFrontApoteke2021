@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light "style="background-color:rgb(117, 197, 197, 0.5);">
+  <a disabled class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" disabled data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/pharmacistHomePage']">Početna <span
+            class="sr-only" disabled>(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h4 class="text-center" style="margin:20px;">Izveštaj</h4>
+  <form *ngIf="this.formVisible" [formGroup]="form" (ngSubmit)="onSubmit() && form.valid" novalidate>
+    <div class="form-group">
+      <h4>Informacije:</h4>
+      <textarea formControlName="info" name="info" id="info"
+        [ngClass]="{'is-invalid': form.get('info').touched && form.get('info').invalid}" class="form-control" rows="5"
+        placeholder="Informacije" [(ngModel)]="appointment.info" name="info" id="info"></textarea>
+      <div class="alert" *ngIf="form.get('info').touched && form.get('info').invalid" style="color:red;"><i>Polje je
+          obavezno!</i></div>
+    </div>
+    <div class="form-group">
+      <label for="diagnosis">Dijagnoze:</label>
+      <select formControlName="diagnosis"
+        [ngClass]="{'is-invalid': form.get('diagnosis').touched && form.get('diagnosis').invalid}" class="custom-select"
+        (change)="selectChangeHandler($event)">
+        <option *ngFor="let diagnosis of diagnoses" value="{{diagnosis.id}}">{{diagnosis.name}} |
+          {{diagnosis.description}}</option>
+      </select>
+    </div>
+    <h4>Recept:</h4>
+    <label for="recipe">Odaberite lek:</label>
+    <div *ngFor="let drug of drugs; let i=index" class="form-control">
+      <label class="checkbox-inline">
+        <input type="checkbox" [value]="drug.id" (change)="onCheckboxChange($event)" />
+        {{drug.name}}
+      </label>
+    </div>
+    <p class="error" *ngIf="this.form2.controls['checkArray'].errors?.required" style="color:red;">
+      <i>Lek je obavezan!</i>
+    </p>
+    <div class="form-group">
+      <label for="description">Opis:</label>
+      <textarea formControlName="description" name="description" id="description"
+        [ngClass]="{'is-invalid': form.get('description').touched && form.get('description').invalid}"
+        class="form-control" rows="5" placeholder="Opis" [(ngModel)]="recipe.description" name="clinicDescription"
+        id="description"></textarea>
+      <div class="alert" *ngIf="form.get('description').touched && form.get('description').invalid" style="color:red;">
+        <i>Opis je obavezan!</i></div>
+    </div>
+    <button class="btn btn-success" [disabled]="(!form.valid) || (!form2.valid)" type="submit">Izveštaj</button>
+  </form>
+
+  <div *ngIf="this.scheduleVisible">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Zakazivanje pregleda</h5>
+            <a href="#" class="btn btn-primary" [routerLink]="['/newAppointment']">Dodaj</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Zakazivanje operacije</h5>
+            <a href="#" class="btn btn-primary" [routerLink]="['/new-surgery']">Dodaj</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Izmena medicinskog izveštaja</h5>
+            <a href="#" class="btn btn-primary" [routerLink]="['/edit-medical-record']">Izmeni</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>

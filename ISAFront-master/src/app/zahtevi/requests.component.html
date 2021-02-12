@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(117, 197, 197, 0.5);">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Početna
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/sysadmin-home-page']">Profil<span
+            class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" *ngFor='let request of requests'>
+  <div class="card text-center">
+    <div class="card-header">
+      Zahtev #{{ request.id}}
+    </div>
+    <div class="card-body" style="background-color:rgb(117, 197, 197, 0.5);">
+      <table class="table">
+        <tr>
+          <td><b>Korisničko ime:</b></td>
+          <td>{{ request.username}}</td>
+          <td><b>Lozinka:</b></td>
+          <td>123</td>
+        </tr>
+        <tr>
+          <td><b>Email:</b></td>
+          <td>{{ request.email }}</td>
+          <td><b>Država:</b></td>
+          <td>{{ request.country}}</td>
+        </tr>
+        <tr>
+          <td><b>Ime:</b></td>
+          <td>{{ request.firstName }}</td>
+          <td><b>Prezime:</b></td>
+          <td>{{ request.lastName }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="card-footer text-muted">
+      <a (click)="accept(request)" class="btn btn-outline-success" style="margin-right: 15px;">Potvrdi</a>
+      <button (click)="deleteRequests(request)" class="btn btn-outline-danger">Odbaci</button>
+      <div class="container">
+        <div *ngIf="this.denyClicked">
+          <label>Poruka:</label>
+          <textarea class="form-control" rows="5" placeholder="Opis" [(ngModel)]="message" name="clinicDescription"
+            id="description" required></textarea>
+          <button class="btn btn-success" (click)="sendMessage()">Pošalji</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="page-footer font-small special-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <b>Jovana Brašanac</b>
+  </div>
+</footer>
